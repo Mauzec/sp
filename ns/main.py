@@ -5,12 +5,10 @@ from nksr import *
 class App:
     def __init__(self, root):
         self.root = root
-        self.root.title("Resizable GUI with Table")
+        self.root.title("Network Scanner")
 
-        # Create and place widgets
         self.create_widgets()
 
-        # Configure resizable behavior
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
 
@@ -43,26 +41,22 @@ class App:
                 self.rows.append(row)
 
     def create_widgets(self):
-        # Create frame for the table
         table_frame = ttk.Frame(self.root)
         table_frame.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 
-        # Create table
         table_columns = ["ip", "mac", "country", "provider", "ports"]
         self.table = ttk.Treeview(table_frame, columns=table_columns, show="headings")
 
-        # Set column headings
         for col in table_columns:
             self.table.heading(col, text=col)
 
-        # Place table
         self.table.grid(row=0, column=0, sticky="nsew")
 
-        # Create frame for data entry
+        
         entry_frame = ttk.Frame(self.root)
         entry_frame.grid(row=1, column=0, padx=10, pady=10, sticky="nsew")
 
-        # Create and place Entry widgets for port range
+        
         ttk.Label(entry_frame, text="Port range:").grid(row=0, column=0, padx=5, pady=5)
         self.port_range_entry1 = ttk.Entry(entry_frame)
         self.port_range_entry1.grid(row=0, column=1, padx=5, pady=5)
@@ -70,21 +64,21 @@ class App:
         self.port_range_entry2 = ttk.Entry(entry_frame)
         self.port_range_entry2.grid(row=0, column=3, padx=5, pady=5)
 
-        # Create and place Entry widget for port not range
+        
         ttk.Label(entry_frame, text="Port not range:").grid(row=1, column=0, padx=5, pady=5)
         self.port_not_range_entry = ttk.Entry(entry_frame)
         self.port_not_range_entry.grid(row=1, column=1, columnspan=3, padx=5, pady=5)
 
-        # Create and place Entry widgets for IP range
+        
         ttk.Label(entry_frame, text="IP\mask:").grid(row=2, column=0, padx=5, pady=5)
         self.ip_range_entry1 = ttk.Entry(entry_frame)
         self.ip_range_entry1.grid(row=2, column=1, padx=5, pady=5)
 
-        # Create frame for additional widgets
+        
         additional_frame = ttk.Frame(self.root)
         additional_frame.grid(row=0, column=1, rowspan=2, padx=10, pady=10, sticky="nsew")
 
-        # Create and place Entry widgets for additional filters
+        
         ttk.Label(additional_frame, text="Filter").grid(row=0, column=1, padx=5, pady=5)
 
         ttk.Label(additional_frame, text="IP(or):").grid(row=1, column=0, padx=5, pady=5)
@@ -103,7 +97,7 @@ class App:
         self.ports_entry = ttk.Entry(additional_frame)
         self.ports_entry.grid(row=4, column=1, padx=5, pady=5)
 
-        # Create and place a Button with text "Start"
+        
         start_button = ttk.Button(additional_frame, text="Start", command=self.add_sample_data)
         start_button.grid(row=5, column=0, columnspan=2, pady=10)
 
